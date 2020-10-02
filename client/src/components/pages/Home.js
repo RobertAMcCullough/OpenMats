@@ -16,7 +16,6 @@ class Home extends React.Component {
         // localStorage.setItem('searchStatus', '')
         // localStorage.setItem('lat', null)
         // localStorage.setItem('lng', null)
-        console.log('key is',process.env.REACT_APP_googleMapsAPIKey)
     }
 
     submitSearch = e => {
