@@ -262,7 +262,9 @@ const mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps,{ showGym, updateGym, resetMatId })(GoogleApiWrapper({apiKey:process.env.REACT_APP_googleMapsAPIKey})(UpdateGym))
+const googleMapsKey = process.env.NODE_ENV==='production' ? process.env.REACT_APP_googleMapsAPIKey : process.env.REACT_APP_googleMapsAPIKey_dev
+
+export default connect(mapStateToProps,{ showGym, updateGym, resetMatId })(GoogleApiWrapper({apiKey:googleMapsKey})(UpdateGym))
 
 
 

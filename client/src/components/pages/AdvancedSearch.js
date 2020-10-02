@@ -118,4 +118,6 @@ class AdvancedSearch extends React.Component {
     }
 }
 
-export default connect(null,{ refreshMap, setSearchOptions })(GoogleApiWrapper({apiKey:process.env.REACT_APP_googleMapsAPIKey})(AdvancedSearch))
+const googleMapsKey = process.env.NODE_ENV==='production' ? process.env.REACT_APP_googleMapsAPIKey : process.env.REACT_APP_googleMapsAPIKey_dev
+
+export default connect(null,{ refreshMap, setSearchOptions })(GoogleApiWrapper({apiKey:googleMapsKey})(AdvancedSearch))

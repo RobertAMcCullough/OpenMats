@@ -11,8 +11,8 @@ class ConfirmDeleteModal extends React.Component {
 
     onTriggerClick = () => {   
         //user alredy has to be logged in to reach edit page. check if user who created the mat is the same one who's trying to delete it
-        if(this.props.user.id !== this.props.createdBy) alert('You must be the person who created this post in order to delete it. If you would still like it to be removed, please contact us via the contact page. Thanks!')
-        else this.props.openModal('delete',true)
+        if(this.props.user.id !== this.props.createdBy && this.props.user.id !== 1) alert('You must be the person who created this post in order to delete it. If you would still like it to be removed, please contact us via the contact page. Thanks!')
+        else this.props.openModal('delete',true) //if correct user (or admin) then open the delete modal so they can choose to delete or not
     }
 
     onDeleteClick = async () => {

@@ -103,5 +103,7 @@ const mapStateToProps = (state) => {
         user: state.user
     })
 }
+const googleMapsKey = process.env.NODE_ENV==='production' ? process.env.REACT_APP_googleMapsAPIKey : process.env.REACT_APP_googleMapsAPIKey_dev
 
-export default connect(mapStateToProps, { refreshMap, openModal})(GoogleApiWrapper({apiKey:process.env.REACT_APP_googleMapsAPIKey})(Header))
+
+export default connect(mapStateToProps, { refreshMap, openModal})(GoogleApiWrapper({apiKey:googleMapsKey})(Header))
