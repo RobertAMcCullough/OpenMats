@@ -5,6 +5,7 @@ import { GoogleApiWrapper } from 'google-maps-react'
 
 import { refreshMap } from '../../actions'
 import geocoder from '../../utilities/geocoder'
+import { ThemeProvider } from 'react-bootstrap'
 
 class Home extends React.Component {
     state = {searchTerm : ''}
@@ -15,6 +16,7 @@ class Home extends React.Component {
         // localStorage.setItem('searchStatus', '')
         // localStorage.setItem('lat', null)
         // localStorage.setItem('lng', null)
+        console.log('key is',process.env.REACT_APP_googleMapsAPIKey)
     }
 
     submitSearch = e => {
@@ -31,7 +33,7 @@ class Home extends React.Component {
     render(){
         return(
             <div className="jumbotron text-center">
-                <h1 className="display-4">Welcome to OpenMats.com</h1>
+                <h1 className={this.props.screenSize < 410 ? 'display-5' :'display-4'}>Welcome to OpenMats.org</h1>
                 <p className="lead mt-3">Working hard to become the internet's largest database of Brazilian Jiujitsu open mats.</p>
                 <p className="lead mt-3">(Please help us by adding your gym!)</p>
                 <p className="lead text-danger mt-3">Many gyms currently have restrictions around COVID-19, please call or email before arriving.</p>
@@ -47,4 +49,10 @@ class Home extends React.Component {
     }
 }
 
-export default connect(null,{ refreshMap })(GoogleApiWrapper({apiKey:process.env.REACT_APP_googleMapsAPIKey})(Home))
+const mapStateToProps = (state) => {
+    return({
+        screenSize: state.screenSize
+    })
+}
+
+export default connect(mapStateToProps,{ refreshMap })(GoogleApiWrapper({apiKey:process.env.REACT_APP_googleMapsAPIKey})(Home))
