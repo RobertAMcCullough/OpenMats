@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { SCREEN_RESIZE, FETCH_USER, OPEN_MODAL, REFRESH_MAP, INFO_WINDOW, SET_SEARCH_OPTIONS, SEARCH_OPENMATS, CREATE_OPENMAT, SHOW_OPENMAT, SEARCH_GYMS, SHOW_GYM, RESET_MAT_ID, CLEAR_PREVIOUS, UPDATE_OPENMAT, UPDATE_GYM } from './types'
+import { SCREEN_RESIZE, FETCH_TOTALS, FETCH_USER, OPEN_MODAL, REFRESH_MAP, INFO_WINDOW, SET_SEARCH_OPTIONS, SEARCH_OPENMATS, CREATE_OPENMAT, SHOW_OPENMAT, SEARCH_GYMS, SHOW_GYM, RESET_MAT_ID, CLEAR_PREVIOUS, UPDATE_OPENMAT, UPDATE_GYM } from './types'
 
 
 //stores the width of the current display in pixels for use in responsive componenets
@@ -11,8 +11,18 @@ export const screenResize = width => {
     })
 }
 
-//get currently logged in user using redux-thunk
+//fetches number of openmats, gyms, and US states for home screen
 //thunk returns a promise which is manually dispatched
+export const fetchTotals = () => async dispatch => {
+    const totals = await axios.get('/api/totals')
+
+    dispatch({
+        type: FETCH_TOTALS,
+        payload: totals
+    })
+}
+
+//get currently logged in user using redux-thunk
 export const fetchUser = () => async dispatch => {
     const user = await axios.get('/auth/current_user')
 

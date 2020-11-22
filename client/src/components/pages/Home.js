@@ -3,15 +3,16 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { GoogleApiWrapper } from 'google-maps-react'
 
-import { refreshMap } from '../../actions'
+import { refreshMap, fetchTotals } from '../../actions'
 import geocoder from '../../utilities/geocoder'
-import { ThemeProvider } from 'react-bootstrap'
 
 class Home extends React.Component {
     state = {searchTerm : ''}
 
     componentDidMount(){
         document.title = "OpenMats.org | Search"
+        //fetch total numbers of gyms, mats, states
+        this.props.fetchTotals();
         // localStorage.setItem('searchTerm', '')
         // localStorage.setItem('searchStatus', '')
         // localStorage.setItem('lat', null)
@@ -33,13 +34,14 @@ class Home extends React.Component {
         return(
             <div className="jumbotron text-center">
                 <h1 className={this.props.screenSize < 410 ? 'display-5' :'display-4'}>Welcome to OpenMats.org</h1>
-                <p className="lead mt-3">Working hard to become the internet's largest database of Brazilian Jiujitsu open mats.</p>
+                <p className="lead mt-3">Working hard to become the internet's largest database of Brazilian Jiu Jitsu open mats.</p>
                 <p className="lead mt-3">(Please help us by adding your gym!)</p>
-                <p className="lead text-danger mt-3">Many gyms currently have restrictions around COVID-19, please call or email before arriving.</p>
+                <Link to="/allgyms" className="lead mt-3 font-weight-bold">Currently {this.props.totals.mats} open mats at {this.props.totals.gyms} gyms in {this.props.totals.states} cities.</Link>
+                <p className="lead text-danger mt-3 font-weight-bold">Many gyms currently have restrictions around COVID-19, please call or email before arriving.</p>
                 {/* <p className="lead mt-3">All listings have been updated to reflect COVID-19 changes.</p> */}
                 <hr className="my-4"></hr>
                 <form className="form my-2 my-lg-0 justify-content-center mx-auto" style={{maxWidth:'600px'}} value={this.state.searchTerm} onChange={e=>{this.setState({searchTerm:e.target.value})}} onSubmit={e=>{this.submitSearch(e)}}>
-                    <input className="form-control form-control-lg mr-sm-2" type="search" placeholder="Enter a location to search for open mats..." aria-label="Search" required></input>
+                    <input className="form-control form-control-lg mr-sm-2" type="search" placeholder={this.props.screenSize > 500 ? "Enter a location to search for open mats..." : "Enter a search location..."} aria-label="Search" required></input>
                     <button className="btn btn-lg btn-primary my-3" type="submit">Search</button>
                 </form>
                 <Link to='/advancedSearch'>Advanced Search Options</Link>
@@ -50,10 +52,11 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
     return({
-        screenSize: state.screenSize
+        screenSize: state.screenSize,
+        totals: state.totals
     })
 }
 
 const googleMapsKey = process.env.NODE_ENV==='production' ? process.env.REACT_APP_googleMapsAPIKey : process.env.REACT_APP_googleMapsAPIKey_dev
 
-export default connect(mapStateToProps,{ refreshMap })(GoogleApiWrapper({apiKey:googleMapsKey})(Home))
+export default connect(mapStateToProps,{ refreshMap, fetchTotals })(GoogleApiWrapper({apiKey:googleMapsKey})(Home))

@@ -117,4 +117,24 @@ module.exports = app => {
 
         })
     })
+
+    //Route which returns total number of gyms, mats, and states for home screen
+    app.get('/api/totals', (req,res)=>{
+        let totals={gyms:0,mats:0,states:0}
+        connection.query('SELECT COUNT(*) AS gyms, COUNT(DISTINCT city) AS states FROM gyms', (err,rows)=>{
+            if(err) res.sendStatus(500) //if server error
+            else{
+                totals.gyms = rows[0].gyms
+                totals.states = rows[0].states
+                connection.query('SELECT COUNT(*) AS mats FROM openmats', (err,rows)=>{
+                    if(err) res.sendStatus(500) //if server error
+                    else{
+                        totals.mats = rows[0].mats
+                        res.send(totals)
+                    }
+                })    
+            }
+        })
+    
+    })
 } 

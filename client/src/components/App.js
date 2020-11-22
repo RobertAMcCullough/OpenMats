@@ -8,6 +8,7 @@ import Header from './Header'
 // import Footer from './Footer'
 import Home from './pages/Home'
 import About from './pages/About'
+import AllGyms from './pages/AllGyms'
 import SearchResults from './pages/SearchResults'
 import AdvancedSearch from './pages/AdvancedSearch'
 import MatDetail from './pages/MatDetail'
@@ -42,6 +43,7 @@ class App extends React.Component {
                         <Route path='/' component={Header}></Route>
                         <Route path='/' exact component={Home}></Route>
                         <Route path='/about' exact component={About}></Route>
+                        <Route path='/allgyms' exact component={AllGyms}></Route>
                         <Route path='/failedLogin' exact component={FailedLogin}></Route>
                         <Route path='/advancedSearch' exact component={AdvancedSearch}></Route>
                         <Switch>

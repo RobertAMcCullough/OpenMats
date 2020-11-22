@@ -1,4 +1,5 @@
 export const SCREEN_RESIZE = 'SCREEN_RESIZE'
+export const FETCH_TOTALS = 'FETCH_TOTALS'
 export const FETCH_USER = 'FETCH_USER'
 export const OPEN_MODAL = 'OPEN_MODAL'
 export const REFRESH_MAP = 'REFRESH_MAP'

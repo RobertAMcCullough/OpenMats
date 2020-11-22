@@ -25,7 +25,7 @@ class MapContainer extends React.Component {
             return null
         })
 
-        this.refs.resultMap.map.fitBounds(bounds)
+        if(!this.props.allGyms) this.refs.resultMap.map.fitBounds(bounds)
     }
 
     componentDidMount(){
@@ -77,6 +77,24 @@ class MapContainer extends React.Component {
     }
 
     render(){
+        //sets map when all gyms are listed
+        if(this.props.allGyms){
+            console.log('this one')
+            return(
+                <Map 
+                google={this.props.google}
+                zoom={this.props.zoom}
+                style={this.props.customMapStyles ? this.props.customMapStyles : this.mapStyles}
+                initialCenter={{lat: 39, lng: -97}} //only applies when there is one mat and componentDidMount is bypassed
+                onClick={()=>{this.setState({name: '', visible: false})}}
+                // onReady={()=>{console.log('MAP READY')}}
+            >
+            {this.createMarkers()}
+            {this.renderInfoWindow()}
+            </Map>
+            )
+        }
+        //else return map of subset of all gyms
         return(
             <Map 
                 google={this.props.google}

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 import screenResize from './screenResize'
+import fetchTotals from './fetchTotals'
 import fetchUser from './fetchUser'
 import openModal from './openModal'
 import refreshMap from './refreshMap'
@@ -14,6 +15,7 @@ import showGym from './showGym'
 
 export default combineReducers({
     screenSize: screenResize,
+    totals: fetchTotals,
     user: fetchUser,
     openModal: openModal,
     refreshMap: refreshMap,

@@ -114,7 +114,7 @@ class SearchResults extends React.Component {
                 <div className='container-fluid'>
                     <div className='row'>
                         <div className='col-8'>
-                            <div className='display-4 text-center my-4'>Search Results</div>
+                            <div className='display-4 text-center my-4'>{this.props.openMats.length ? `Search Results (${this.props.openMats.length})` : 'Search Results'}</div>
                             <div className='text-center mt-2 mb-4'>
                                 <Link to='/advancedSearch'>Advanced Search</Link>
                             </div>
@@ -148,7 +148,7 @@ class SearchResults extends React.Component {
             <>
                 <div className='container-fluid'>
                     <div>
-                        <div className='display-4 text-center my-4'>Search Results</div>
+                        <div className='display-4 text-center my-4'>{this.props.openMats.length ? `Search Results (${this.props.openMats.length})` : 'Search Results'}</div>
                         {/* //this.renderGyms() returns a list of gyms from search results along with how many open mats were found at each one */}
                         {/* {this.renderGyms()} */}
                         {this.props.openMats.length ? 
@@ -173,7 +173,7 @@ class SearchResults extends React.Component {
             <>
                 <div className='container-fluid'>
                     <div>
-                        <div className='display-4 text-center my-4'>Search Results</div>
+                        <div className='display-4 text-center my-4'>{this.props.openMats.length ? `Search Results (${this.props.openMats.length})` : 'Search Results'}</div>
                         {/* //this.renderGyms() returns a list of gyms from search results along with how many open mats were found at each one */}
                         {/* {this.renderGyms()} */}
                         {this.props.openMats.length ? 
