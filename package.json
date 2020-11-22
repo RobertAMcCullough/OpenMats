@@ -11,7 +11,6 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "engines": {
-    "node": "8.x",
     "npm": "6.11.3"
   },
   "author": "Robert McCullough",

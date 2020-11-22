@@ -10,7 +10,7 @@ module.exports = app => {
     //return current user. the full user model is stored on req.user
     app.get('/auth/current_user',(req,res)=>{
         //remove hashed password from object before sending it
-        if (req.user.password) delete req.user['password']
+        if (req.user && req.user.password) delete req.user['password']
         
         res.send(req.user)
     })
