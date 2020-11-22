@@ -33,7 +33,7 @@ class Home extends React.Component {
     render(){
         return(
             <div className="jumbotron text-center">
-                <h1 className={this.props.screenSize < 410 ? 'display-5' :'display-4'}>Welcome to OpenMats.org</h1>
+                <h1 className={this.props.screenSize < 410 ? 'display-5' :'display-4'}>Welcome to OpenMats.org TEST</h1>
                 <p className="lead mt-3">Working hard to become the internet's largest database of Brazilian Jiu Jitsu open mats.</p>
                 <p className="lead mt-3">(Please help us by adding your gym!)</p>
                 <Link to="/allgyms" className="lead mt-3 font-weight-bold">Currently {this.props.totals.mats} open mats at {this.props.totals.gyms} gyms in {this.props.totals.states} cities.</Link>
