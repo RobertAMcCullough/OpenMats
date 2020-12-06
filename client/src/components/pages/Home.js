@@ -34,7 +34,7 @@ class Home extends React.Component {
         return(
             <div className="jumbotron bg-cover text-center background">
                 <h1 className={this.props.screenSize < 410 ? 'display-5' :'display-4'}>Welcome to OpenMats.org</h1>
-                <p className="lead mt-3" style={{fontWeight:'400'}}>Working hard to become the internet's largest database of Brazilian Jiu Jitsu open mats.</p>
+                <p className="lead mt-3" style={{fontWeight:'400'}}>Working hard to become the Internet's largest database of Brazilian Jiu Jitsu open mats.</p>
                 {/* <p className="lead mt-3">(Please help us by adding your gym!)</p> */}
                 <Link to="/allgyms" className="lead mt-3 font-weight-bold">Currently {this.props.totals.mats} open mats at {this.props.totals.gyms} gyms in {this.props.totals.states} cities.</Link>
                 <p className="lead text-danger mt-3 mb-5 font-weight-bold">Many gyms currently have restrictions around COVID-19, please call or email before arriving.</p>
