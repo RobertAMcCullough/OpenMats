@@ -38,6 +38,13 @@
     text-decoration: none;
 }
 
+.background {
+    background-image: linear-gradient(to top, rgba(255,255,255,0.7) 0%,rgba(255,255,255,0.97) 100%), url(https://openmats.s3.amazonaws.com/otherPhotos/background1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
 /* creates an empty card that will cards fill to the left */
 .empty-child-filler {
     width: 220px;
