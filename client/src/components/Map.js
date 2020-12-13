@@ -56,7 +56,7 @@ class MapContainer extends React.Component {
                 key={e.id} 
                 id={e.id} 
                 position={{lat: e.lat, lng:e.lng}}
-                label={this.props.gyms.length===1 ? '' : (ind+1).toString()} //doesn't add a label when there is only one gym
+                label={this.props.gyms.length===1 || this.props.allGyms ? '' : (ind+1).toString()} //doesn't add a label when there is only one gym or all gyms page
                 onClick={(props)=>{this.props.history.push(`/gyms/${props.id}`)}}
                 onMouseover={(props, marker)=>{if(this.state.name!==e.name){this.setState({name: e.name, marker: marker, visible: true})}}}
             >
@@ -70,7 +70,7 @@ class MapContainer extends React.Component {
         return(
             <InfoWindow marker={this.state.marker} visible={this.state.visible}>
                 <div>
-                    <h5>{this.state.marker.label}. {this.state.name}</h5>
+                {this.props.gyms.length===1 || this.props.allGyms ? <h5>{this.state.name}</h5> : <h5>{this.state.marker.label}. {this.state.name}</h5>}
                 </div>
             </InfoWindow>
         )
@@ -79,7 +79,6 @@ class MapContainer extends React.Component {
     render(){
         //sets map when all gyms are listed
         if(this.props.allGyms){
-            console.log('this one')
             return(
                 <Map 
                 google={this.props.google}

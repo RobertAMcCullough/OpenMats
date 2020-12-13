@@ -65,4 +65,8 @@ module.exports = app => {
 
     //step 2 for facebook oauth
     app.get('/auth/facebook/callback', passport.authenticate('facebook'), (req,res)=>{res.redirect('/')})
+
+    app.get('/auth/twitter', passport.authenticate('twitter')) //step 1 - redirects user to twitter
+
+    app.get('/auth/twitter/callback', passport.authenticate('twitter'), (req, res)=>{res.redirect('/')}) 
 }

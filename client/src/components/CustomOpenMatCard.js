@@ -41,6 +41,17 @@ class CustomOpenMatCard extends React.Component {
         }
     }
 
+    formatNote = note => {
+        if(!note) return null
+        let cutoff = 30;
+        if(note.length<cutoff){
+            return note
+        }else{
+            let newNote = note.slice(0,cutoff-3) + '...'
+            return newNote
+        }
+    }
+
     render(){
         if(this.props.size==='small'){
             //small card
@@ -56,11 +67,12 @@ class CustomOpenMatCard extends React.Component {
                         <div className='p-2'>
                             <div className='d-flex flex-column justify-content-between'>
                                 <h5>{this.props.mat.day} - {formatTime(this.props.mat.time)}</h5>
-                                <p>{this.props.mat.name}</p>
+                                <p style={{fontWeight:'bold'}}>{this.props.mat.name}</p>
                             </div>
-                            <div className='d-flex'>
-                                <p className='pr-5' style={this.formatCostStyles(this.props.mat.cost)}>{this.props.mat.cost === 0 ? 'FREE' : `$${this.props.mat.cost}`}</p>
-                                <p style={{fontWeight:'bold'}}>{this.formatGiNogi(this.props.mat.gi_nogi)}</p>
+                            <div className='d-flex'>                                
+                                {/* <p className='pr-5'>{this.formatGiNogi(this.props.mat.gi_nogi)}</p>
+                                <p style={this.formatCostStyles(this.props.mat.cost)}>{this.props.mat.cost === 0 ? 'FREE' : `$${this.props.mat.cost}`}</p> */}
+                                <p>{this.formatNote(this.props.mat.notes)}</p>
                             </div>
                         </div>
                     </Link>
@@ -78,13 +90,18 @@ class CustomOpenMatCard extends React.Component {
                     </Link>
                     <Link to={`/openmats/${this.props.mat.id}`} className={this.props.mat.paused ? 'plain-link covid' : 'plain-link'} style={{width:'69%'}}>
                         <div className='p-2'>
-                            <div className='d-flex justify-content-between'>
-                                <h5>{this.props.mat.day} - {formatTime(this.props.mat.time)}</h5>
-                                <p>{this.props.mat.name}</p>
+                            <div className='d-flex'>
+                                <h5 className='pr-2' style={{width:'40%'}}>{this.props.mat.day} - {formatTime(this.props.mat.time)}</h5>
+                                <p style={{fontWeight:'bold'}}>{this.props.mat.name}</p>
                             </div>
-                            <div>
-                                <p style={this.formatCostStyles(this.props.mat.cost)}>{this.props.mat.cost === 0 ? 'FREE' : `$${this.props.mat.cost}`}</p>
-                                <p style={{fontWeight:'bold'}}>{this.formatGiNogi(this.props.mat.gi_nogi)}</p>
+                            <div className='d-flex'>    
+                                <div className='d-flex' style={{width:'40%'}}>
+                                    <p className='pr-5'>{this.formatGiNogi(this.props.mat.gi_nogi)}</p>
+                                    <p style={this.formatCostStyles(this.props.mat.cost)}>{this.props.mat.cost === 0 ? 'FREE' : `$${this.props.mat.cost}`}</p>
+                                </div> 
+                                <div>
+                                    <p>{this.formatNote(this.props.mat.notes)}</p>
+                                </div>                           
                             </div>
                         </div>
                     </Link>

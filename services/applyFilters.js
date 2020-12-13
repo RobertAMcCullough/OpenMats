@@ -4,10 +4,19 @@ module.exports = (rows, options) => {
     //possible filters include day, time, gi/nogi, cost
     let results = rows //results will be filterd and returned at the end
 
+    let days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+
+    let daysWanted = [] // will contain an array of days that results are wanted for
+
+    days.forEach(el=>{
+        if(options[el]) daysWanted.push(el)
+    })
+
     //filter day
-    if(options.day){
+    //only runs if specific days are wanted
+    if(daysWanted.length){
         results = results.filter(el=>{
-            return el.day===options.day
+            return daysWanted.includes(el.day)
         })
     }
 

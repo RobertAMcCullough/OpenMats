@@ -2,6 +2,7 @@ const passport = require('passport')
 const mysql = require('mysql')
 const GoogleStrategy = require('passport-google-oauth20')
 const FacebookStrategy = require('passport-facebook')
+const TwitterStrategy = require('passport-twitter').Strategy
 const LocalStrategy = require('passport-local')
 const bcrypt = require('bcrypt-nodejs')
 
@@ -82,6 +83,42 @@ passport.use(new GoogleStrategy({
         })
     }
 ))
+
+//same as above google strategy, just for twitter
+passport.use(new TwitterStrategy({ 
+    consumerKey: keys.twitterAppId,
+    consumerSecret: keys.twitterSecret,
+    callbackURL: '/auth/twitter/callback',
+    proxy: true,
+    profileFields: ['id', 'displayName', 'name']
+}, (accessToken, refreshToken, profile, done) => {
+    //either find or create user
+    connection.query(`SELECT * FROM users WHERE twitter_id=${profile.id}`,(err,rows)=>{
+        //if db error
+        if(err) return done(err, null)
+        //if user exists
+        if(rows.length) return done(null, rows[0])
+        //if user does not exist, then create
+        if(!rows.length){
+
+            //this removes the string "_normal" from the photo url and makes the image bigger
+            let photoString = profile.photos[0].value
+            if(profile.photos[0].value.includes('_normal')){
+                let photoArray = profile.photos[0].value.split('_normal')
+                photoString = photoArray[0]+photoArray[1]
+            }
+
+            connection.query(`INSERT INTO users(twitter_id, first_name, photo) VALUES("${profile.id}", "${profile.displayName.split(' ')[0]}", "${photoString}")`, (err,rows)=>{
+                if(err) return done(err,null)
+                //now that user is created, fetch the user record and pass it to done()
+                connection.query(`SELECT * FROM users WHERE twitter_id=${profile.id}`,(err,rows)=>{
+                    if(err) return done(err,null)
+                    return done(null, rows[0])
+                })
+            })
+        }
+    })
+}))
 
 // config facebook strategy
 passport.use(new FacebookStrategy({

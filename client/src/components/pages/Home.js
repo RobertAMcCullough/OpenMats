@@ -32,11 +32,12 @@ class Home extends React.Component {
 
     render(){
         return(
-            <div className="jumbotron bg-cover text-center background">
+            <div className={`jumbotron bg-cover text-center ${this.props.screenSize > 992 ? "background" : "background-small"}`}>
                 <h1 className={this.props.screenSize < 410 ? 'display-5' :'display-4'}>Welcome to OpenMats.org</h1>
                 <p className="lead mt-3" style={{fontWeight:'400'}}>Working hard to become the Internet's largest database of Brazilian Jiu Jitsu open mats.</p>
                 {/* <p className="lead mt-3">(Please help us by adding your gym!)</p> */}
-                <Link to="/allgyms" className="lead mt-3 font-weight-bold">Currently {this.props.totals.mats} open mats at {this.props.totals.gyms} gyms in {this.props.totals.states} cities.</Link>
+                <Link to="/allgyms" className="lead mt-3 font-weight-bold"><u>Currently {this.props.totals.mats} open mats at {this.props.totals.gyms} gyms in {this.props.totals.states} cities</u> <button className="btn btn-sm btn-primary ml-2">See All</button></Link>
+                {/* <Link to="/allgyms" className="lead mt-3 font-weight-bold"><u>Currently {this.props.totals.mats} open mats at {this.props.totals.gyms} gyms in {this.props.totals.states} cities</u> (<u>See All</u>)</Link> */}
                 <p className="lead text-danger mt-3 mb-5 font-weight-bold">Many gyms currently have restrictions around COVID-19, please call or email before arriving.</p>
                 {/* <p className="lead mt-3">All listings have been updated to reflect COVID-19 changes.</p> */}
                 {/* <hr className="my-4"></hr> */}

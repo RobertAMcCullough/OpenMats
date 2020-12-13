@@ -11,8 +11,15 @@ class AdvancedSearch extends React.Component {
     state = {
         searchTerm : '',
         distance: 50,
-        day: '',
+        // day: '',
         //the remaining values are from checkboxes and will be true or false
+        Monday: '',
+        Tuesday: '',
+        Wednesday: '',
+        Thursday: '',
+        Friday: '',
+        Saturday: '',
+        Sunday: '',
         timeMorning: '', 
         timeDay: '',
         timeEvening: '',
@@ -45,25 +52,35 @@ class AdvancedSearch extends React.Component {
             <div>
                 <form className='form' onSubmit={e=>this.submitSearch(e)}>
                     <div className='form-group row'>
-                        <label className='col-sm-2 col-form-label' htmlFor='day-input'>Location</label>
+                        <label className='col-sm-2 col-form-label' htmlFor='location-input'>Location</label>
                         <div className='col-sm-6'>
-                            <input className='form-control' id='day-input' type='text' placeholder='Enter Location' required  value={this.state.searchTerm} onChange={e=>this.setState({searchTerm: e.target.value})}></input>
+                            <input className='form-control' id='location-input' type='text' placeholder='Enter Location' required  value={this.state.searchTerm} onChange={e=>this.setState({searchTerm: e.target.value})}></input>
                         </div>
                     </div>
                     <div className='form-group row'>
                         <label className='col-sm-2 col-form-label' htmlFor='distance-input'>Distance</label>
                         <div className='col-sm-6 d-flex align-items-center'>
-                            <input className='form-control' id='distance-input' type='range' min='0' max='200' value={this.state.distance} onChange={e=>this.setState({distance: e.target.value})}></input>
+                            <input className='form-control' id='distance-input' type='range' min='0' max='500' value={this.state.distance} onChange={e=>this.setState({distance: e.target.value})}></input>
                             <div style={{width:'25%', textAlign:'end'}}>{this.state.distance} Miles</div>
                         </div>
                     </div>
                     <div className='form-group row'>
                         <label className='col-sm-2 col-form-label' htmlFor='day-input'>Day</label>
-                        <div className='col-sm-6'>
+                        {/* <div className='col-sm-6'>
                             <select className='form-control' id='day-input' value={this.state.day} onChange={e=>this.setState({day: e.target.value})}>
                                 <option value='' defaultValue>Select Day</option>
                                 {days.map(el=><option key={el}>{el}</option>)}
                             </select>
+                        </div> */}
+                        <div className='col-sm-6'>
+                            {days.map(el=>{
+                                return(
+                                    <div className='form-check'>
+                                        <input className='form-check-input' type='checkbox' id={el} onChange={e=>this.setState({[el]: !this.state[el]})}></input>
+                                        <label className='form-check-label' htmlFor={el}>{el}</label>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                     <div className='form-group row'>
