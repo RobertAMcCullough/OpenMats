@@ -9,5 +9,7 @@ module.exports = {
     googleClientSecret: process.env.googleClientSecret,
     facebookAppId: process.env.facebookAppId,
     facebookSecret: process.env.facebookSecret,
-    dbPort: process.env.dbPort
+    dbPort: process.env.dbPort,
+    twitterAppId: process.env.twitterAppId,
+    twitterSecret: process.env.twitterSecret
 }
