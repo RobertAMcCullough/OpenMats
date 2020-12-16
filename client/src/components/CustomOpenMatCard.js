@@ -41,15 +41,23 @@ class CustomOpenMatCard extends React.Component {
         }
     }
 
-    formatNote = note => {
-        if(!note) return null
-        let cutoff = 30;
-        if(note.length<cutoff){
-            return note
+    formatLength = (item, digits) => {
+        if(!item) return null
+        if(item.length<digits){
+            return item
         }else{
-            let newNote = note.slice(0,cutoff-3) + '...'
-            return newNote
+            return item.slice(0,digits-3) + '...'
         }
+    }
+
+    //returns the number of the gym for each mat (used for numbering mats)
+    findGymNumber = () => {
+        //find gym from gymList that contains mat
+        let ind = this.props.gymList.findIndex(el=>{
+            return el.id === this.props.mat.gym_id
+        })
+
+        return (ind+1)
     }
 
     render(){
@@ -67,12 +75,12 @@ class CustomOpenMatCard extends React.Component {
                         <div className='p-2'>
                             <div className='d-flex flex-column justify-content-between'>
                                 <h5>{this.props.mat.day} - {formatTime(this.props.mat.time)}</h5>
-                                <p style={{fontWeight:'bold'}}>{this.props.mat.name}</p>
+                                <p style={{fontWeight:'bold'}}>{this.findGymNumber()}. {this.formatLength(this.props.mat.name, 22)}</p>
                             </div>
                             <div className='d-flex'>                                
                                 {/* <p className='pr-5'>{this.formatGiNogi(this.props.mat.gi_nogi)}</p>
                                 <p style={this.formatCostStyles(this.props.mat.cost)}>{this.props.mat.cost === 0 ? 'FREE' : `$${this.props.mat.cost}`}</p> */}
-                                <p>{this.formatNote(this.props.mat.notes)}</p>
+                                <p>{this.formatLength(this.props.mat.notes, 30)}</p>
                             </div>
                         </div>
                     </Link>
@@ -91,16 +99,19 @@ class CustomOpenMatCard extends React.Component {
                     <Link to={`/openmats/${this.props.mat.id}`} className={this.props.mat.paused ? 'plain-link covid' : 'plain-link'} style={{width:'69%'}}>
                         <div className='p-2'>
                             <div className='d-flex'>
-                                <h5 className='pr-2' style={{width:'40%'}}>{this.props.mat.day} - {formatTime(this.props.mat.time)}</h5>
-                                <p style={{fontWeight:'bold'}}>{this.props.mat.name}</p>
+                                <div style={{width:'40%'}}>
+                                    <h5 className='pr-2'>{this.props.mat.day}</h5>
+                                    <h5 className='pr-2'>{formatTime(this.props.mat.time)}</h5>                    
+                                </div>
+                                <p style={{fontWeight:'bold'}}>{this.findGymNumber()}. {this.formatLength(this.props.mat.name, 30)}</p>
                             </div>
                             <div className='d-flex'>    
                                 <div className='d-flex' style={{width:'40%'}}>
-                                    <p className='pr-5'>{this.formatGiNogi(this.props.mat.gi_nogi)}</p>
+                                    <p className={this.props.mat.gi_nogi ? 'pr-5' : ''}>{this.formatGiNogi(this.props.mat.gi_nogi)}</p>
                                     <p style={this.formatCostStyles(this.props.mat.cost)}>{this.props.mat.cost === 0 ? 'FREE' : `$${this.props.mat.cost}`}</p>
                                 </div> 
                                 <div>
-                                    <p>{this.formatNote(this.props.mat.notes)}</p>
+                                <p>{this.formatLength(this.props.mat.notes, 30)}</p>
                                 </div>                           
                             </div>
                         </div>

@@ -22,7 +22,7 @@ class UserAvatar extends React.Component{
             <Nav.Link as={Link} to='/advancedSearch'>Search</Nav.Link>
             {/* <Nav.Link as={Link} to='/profile'>Profile</Nav.Link>
             <Nav.Link as={Link} to='/settings'>Settings</Nav.Link> */}
-            <Nav.Link href='/auth/logout'>Log Out</Nav.Link>
+            <Nav.Link href='/auth/logout'>Log Out {this.props.user.first_name || this.props.user.username}</Nav.Link>
             </>
         )
     }
@@ -35,7 +35,7 @@ class UserAvatar extends React.Component{
                     {/* <Dropdown.Item as={Link} to='/profile'>Profile</Dropdown.Item>
                     <Dropdown.Item as={Link} to='/settings'>Settings</Dropdown.Item> */}
                     <Dropdown.Item href='/advancedSearch'>Search</Dropdown.Item>
-                    <Dropdown.Item href='/auth/logout'>Log Out</Dropdown.Item>
+                    <Dropdown.Item href='/auth/logout'>Log Out {this.props.user.first_name || this.props.user.username}</Dropdown.Item>
                 </NavDropdown>
             </div>
         )

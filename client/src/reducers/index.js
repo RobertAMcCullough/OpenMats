@@ -12,6 +12,7 @@ import newMatId from './newMatId'
 import showOpenmat from './showOpenmat'
 import searchGyms from './searchGyms'
 import showGym from './showGym'
+import sortBy from './sortBy'
 
 export default combineReducers({
     screenSize: screenResize,
@@ -25,5 +26,6 @@ export default combineReducers({
     newMatId: newMatId, //id of newly created open mat
     matDetails: showOpenmat, //fetch single open mat
     gyms: searchGyms, //list of search results of gyms for area
-    gymDetails: showGym //fetch single gym
+    gymDetails: showGym, //fetch single gym
+    sortBy: sortBy
 })

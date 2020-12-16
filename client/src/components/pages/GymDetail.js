@@ -182,6 +182,7 @@ class GymDetail extends React.Component {
         return(
             <div>
                 <div className='container-fluid'>
+                    <h2 className='text-center my-5'>{this.props.gym[0].name}</h2>
                     <div style={{height:'35vh'}}>
                         <Map customMapStyles={{width:'658px',height: '30vh'}} gyms={[this.props.gym[0]]}/>
                     </div>
@@ -201,6 +202,7 @@ class GymDetail extends React.Component {
         return(
             <div>
                 <div className='container-fluid'>
+                    <h3 className='text-center my-5'>{this.props.gym[0].name}</h3>
                     <div style={{height:'35vh'}}>
                         <Map customMapStyles={{width:'478px',height: '30vh'}} gyms={[this.props.gym[0]]}/>
                     </div>

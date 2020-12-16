@@ -89,7 +89,7 @@ class UpdateMat extends React.Component {
                         </div>
                         <div style={{flexBasis:'30%'}} className='form-group'>
                             <label htmlFor='cost'>Cost:</label>
-                            <input className='form-control' type='number' placeholder='(optional)' id='cost' value={this.state.openMat.cost} onChange={e=>{let obj = this.state.openMat; obj.cost=e.target.value; this.setState({openMat:obj})}}></input>
+                            <input className='form-control' type='number' placeholder='(optional)' id='cost' min='0' inputMode='decimal' value={this.state.openMat.cost} onChange={e=>{let obj = this.state.openMat; obj.cost=e.target.value; this.setState({openMat:obj})}}></input>
                         </div>
                     </div>
                     <div className='d-flex justify-content-between'>
@@ -155,7 +155,7 @@ class UpdateMat extends React.Component {
                     <div className='d-flex justify-content-between'>
                         <div style={{flexBasis:'45%'}} className='form-group'>
                             <label htmlFor='cost'>Cost:</label>
-                            <input className='form-control' type='number' placeholder='(optional)' id='cost' value={this.state.openMat.cost} onChange={e=>{let obj = this.state.openMat; obj.cost=e.target.value; this.setState({openMat:obj})}}></input>
+                            <input className='form-control' type='number' placeholder='(optional)' id='cost' min='0' inputMode='decimal' value={this.state.openMat.cost} onChange={e=>{let obj = this.state.openMat; obj.cost=e.target.value; this.setState({openMat:obj})}}></input>
                         </div>
                         <div style={{flexBasis:'45%'}} className='form-group'>
                             <label htmlFor='call_first'>Should people call first?</label>
@@ -218,7 +218,7 @@ class UpdateMat extends React.Component {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='cost'>Cost:</label>
-                        <input className='form-control' type='number' placeholder='Enter Cost' id='cost' value={this.state.openMat.cost} onChange={e=>{let obj = this.state.openMat; obj.cost=e.target.value; this.setState({openMat:obj})}}></input>
+                        <input className='form-control' type='number' placeholder='Enter Cost' id='cost' min='0' inputMode='decimal' value={this.state.openMat.cost} onChange={e=>{let obj = this.state.openMat; obj.cost=e.target.value; this.setState({openMat:obj})}}></input>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='call_first'>Should people call first?</label>
@@ -271,7 +271,7 @@ class UpdateMat extends React.Component {
     render(){
         return(
             <div>
-                <h3 className='my-5 text-center display-4'>Edit Open Mat</h3>
+                <h2 className={this.props.screenSize > breakPoints.medium ? 'my-5 text-center display-4' : 'my-5 text-center'}>Edit Open Mat</h2>
                 {this.renderForm()}
             </div>
         )

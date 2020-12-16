@@ -245,7 +245,7 @@ class UpdateGym extends React.Component {
     render(){
         return(
             <div>
-                <h3 className='my-5 text-center display-4'>Edit Gym</h3>
+                <h2 className={this.props.screenSize > breakPoints.medium ? 'my-5 text-center display-4' : 'my-5 text-center'}>Edit Gym</h2>
                 {this.renderForm()}
             </div>
         )

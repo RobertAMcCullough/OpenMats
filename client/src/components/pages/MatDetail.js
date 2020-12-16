@@ -165,7 +165,7 @@ class MatDetail extends React.Component {
         return(
             <div>
                 <div>
-                    <Link to={`/gyms/${this.props.mat.gym_id}`} className='plain-link'><div className='display-4 text-center my-4'>Open Mat at {this.props.mat.name}</div></Link>
+                    <Link to={`/gyms/${this.props.mat.gym_id}`} className='plain-link'><h2 className={this.props.screenSize > breakPoints.medium ? 'display-4 text-center my-4' : 'text-center my-4'}>Open Mat at {this.props.mat.name}</h2></Link>
                     <Link to={`/gyms/${this.props.mat.gym_id}`}><div style={{fontSize:'1.2rem'}} className='text-center mb-4'>See all open mats at this location</div></Link>
                     <div>
                         {this.renderDetails()}

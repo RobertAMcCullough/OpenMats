@@ -123,7 +123,7 @@ class Create extends React.Component {
         //These parts of the form are only displayed when entering a new gym
         const newGymFields = (
             <>
-            <h4 className='text-center mt-4'>Gym Details:</h4>
+            <h4 className='text-center my-4'>Gym Details:</h4>
             <div className='d-flex justify-content-between'>
                 <div style={{flexBasis:'40%'}} className='form-group'>
                     <label htmlFor='name'>Name of Gym:</label>
@@ -183,7 +183,7 @@ class Create extends React.Component {
                         </div>
                         <div style={{flexBasis:'30%'}} className='form-group'>
                             <label htmlFor='cost'>Cost:</label>
-                            <input className='form-control' type='number' placeholder='(optional)' id='cost' value={this.state.openmat.cost} onChange={e=>{let obj = this.state.openmat; obj.cost=e.target.value; this.setState({openmat:obj})}}></input>
+                            <input className='form-control' type='number' min='0' inputMode='decimal' placeholder='(optional)' id='cost' value={this.state.openmat.cost} onChange={e=>{let obj = this.state.openmat; obj.cost=e.target.value; this.setState({openmat:obj})}}></input>
                         </div>
                     </div>
                     <div className='d-flex justify-content-between'>
@@ -292,7 +292,7 @@ class Create extends React.Component {
                     <div className='d-flex justify-content-between'>
                         <div style={{flexBasis:'45%'}} className='form-group'>
                             <label htmlFor='cost'>Cost:</label>
-                            <input className='form-control' type='number' placeholder='(optional)' id='cost' value={this.state.openmat.cost} onChange={e=>{let obj = this.state.openmat; obj.cost=e.target.value; this.setState({openmat:obj})}}></input>
+                            <input className='form-control' type='number' placeholder='(optional)' min='0' inputMode='decimal' id='cost' value={this.state.openmat.cost} onChange={e=>{let obj = this.state.openmat; obj.cost=e.target.value; this.setState({openmat:obj})}}></input>
                         </div>
                         <div style={{flexBasis:'45%'}} className='form-group'>
                             <label htmlFor='call_first'>Should people call first?</label>
@@ -392,7 +392,7 @@ class Create extends React.Component {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='cost'>Cost:</label>
-                        <input className='form-control' type='number' placeholder='Enter Cost' id='cost' value={this.state.openmat.cost} onChange={e=>{let obj = this.state.openmat; obj.cost=e.target.value; this.setState({openmat:obj})}}></input>
+                        <input className='form-control' type='number' placeholder='Enter Cost' id='cost' min='0' inputMode='decimal' value={this.state.openmat.cost} onChange={e=>{let obj = this.state.openmat; obj.cost=e.target.value; this.setState({openmat:obj})}}></input>
                     </div>
                     <div className='form-group'>
                         <label htmlFor='call_first'>Should people call first?</label>
@@ -443,7 +443,8 @@ class Create extends React.Component {
     render(){
         return(
             <div>
-                <h3 className='my-5 text-center display-4'>{this.props.screenSize > breakPoints.small ? 'Add a New Open Mat' : 'Add New Open Mat'}</h3>
+                {this.props.screenSize > breakPoints.medium ? <h3 className='my-5 text-center display-4'>Add a New Open Mat</h3> : <h2 className='my-5 text-center'>Add New Open Mat</h2>}
+                {/* <h3 className='my-5 text-center display-4'>{this.props.screenSize > breakPoints.small ? 'Add a New Open Mat' : 'Add New Open Mat'}</h3> */}
                 {this.renderSelectGymButton()}
                 {this.renderForm()}
             </div>

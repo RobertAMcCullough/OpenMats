@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { SCREEN_RESIZE, FETCH_TOTALS, FETCH_USER, OPEN_MODAL, REFRESH_MAP, INFO_WINDOW, SET_SEARCH_OPTIONS, SEARCH_OPENMATS, CREATE_OPENMAT, SHOW_OPENMAT, SEARCH_GYMS, SHOW_GYM, RESET_MAT_ID, CLEAR_PREVIOUS, UPDATE_OPENMAT, UPDATE_GYM } from './types'
+import { SCREEN_RESIZE, FETCH_TOTALS, FETCH_USER, OPEN_MODAL, REFRESH_MAP, INFO_WINDOW, SET_SEARCH_OPTIONS, SEARCH_OPENMATS, CREATE_OPENMAT, SHOW_OPENMAT, SEARCH_GYMS, SHOW_GYM, RESET_MAT_ID, CLEAR_PREVIOUS, UPDATE_OPENMAT, UPDATE_GYM, SORT_BY } from './types'
 
 
 //stores the width of the current display in pixels for use in responsive componenets
@@ -66,6 +66,14 @@ export const setSearchOptions = options => {
     return({
         payload: options,
         type: SET_SEARCH_OPTIONS
+    })
+}
+
+//stores what to sort search results by
+export const setSortBy = item => {
+    return({
+        payload: item,
+        type: SORT_BY
     })
 }
 
