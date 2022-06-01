@@ -19,7 +19,7 @@ class LogInModal extends React.Component {
                         <h1 className='mt-4 mb-3'>Log In</h1>
                         <p className='mb-4'>Welcome back. Log in below.</p>
                         <a className="btn btn-block btn-social btn-google text-center" href='/auth/google'><span className="fab fa-google"></span> Log in with Google</a>
-                        {/* <a className="btn btn-block btn-social btn-twitter text-center" href='/auth/twitter'><span className="fab fa-twitter"></span> Log in with Twitter</a> */}
+                        <a className="btn btn-block btn-social btn-twitter text-center" href='/auth/twitter'><span className="fab fa-twitter"></span> Log in with Twitter</a>
                         {/* <a className="btn btn-block btn-social btn-facebook text-center" href='/auth/facebook'><span className="fab fa-facebook-f"></span> Log in with Facebook</a> */}
                         <div className='mt-4 mb-4'>
                             <p className='hr-centered'><span>OR</span></p>
