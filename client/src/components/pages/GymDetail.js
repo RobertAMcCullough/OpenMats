@@ -75,6 +75,7 @@ class GymDetail extends React.Component {
     }
 
     renderTable(){
+        if(!this.props.gym[0].day) return null;
         return this.props.gym.map(el=>{
             return(
                 <tr className='pointer-on-hover' key={el.id} onClick={()=>this.props.history.push(`/openmats/${el.id}`)}>
@@ -220,7 +221,7 @@ class GymDetail extends React.Component {
 
     render(){
         if(!this.props.gym) return <div></div>
-        if (!this.props.gym[0].id) return <div></div>
+        // if (!this.props.gym[0].id) return <div></div>
         if(this.props.screenSize > breakPoints.medium) return this.renderLarge()
         if(this.props.screenSize > breakPoints.small) return this.renderMedium()
         else return this.renderSmall()
