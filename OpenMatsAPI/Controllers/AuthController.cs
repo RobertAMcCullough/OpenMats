@@ -38,7 +38,6 @@ public class AuthController : ControllerBase
                 Username = userToRegister.Username,
                 FirstName = userToRegister.FirstName,
                 PasswordHash = passwordHash,
-                // PasswordSalt = passwordSalt,
                 CreatedAt = DateTime.Now
             };
 

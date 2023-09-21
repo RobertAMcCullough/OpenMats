@@ -11,7 +11,7 @@ class About extends React.Component{
                 <hr></hr>
                 <div>
                     <p>OpenMats.org was built with a React front end and a C#/.NET/MSSQL backend by <a href='https://github.com/RobertAMcCullough'>Bob McCullough</a>.</p>
-                    <p>Other technologies used include Redux, Google's Geocoding and Maps Javascript APIs, Bootstrap, JWT authentication, Entity Framework, Dapper.</p>
+                    <p>Other technologies used include Redux, Google's Geocoding and Maps APIs, Bootstrap, JWT authentication (via cookies), Entity Framework and Dapper.</p>
                     <p>The front end is statically hosted from AWS and the backend and database are hosted on Microsoft Azure.</p>
                     <p>Contact Bob via <a href='mailto: robertamccullough@gmail.com'>email</a>.</p>
                 </div>
