@@ -2,4 +2,6 @@
 
 [Openmats.org](https://www.openmats.org) is a website that allows users to search for, create, and edit entries for jiujitsu open mats (open training sessions) around the country.
 
-Built on a Node/Express/React/SQL stack and hosted on AWS, it also uses Passport for authentication and several Google Maps APIs.
+Other technologies used include Redux, Google's Geocoding and Maps APIs, Bootstrap, JWT authentication (via cookies), Entity Framework and Dapper.
+
+The front end is statically hosted from AWS (S3) and the backend and database are hosted on Microsoft Azure.
